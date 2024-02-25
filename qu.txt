@@ -1,0 +1,55 @@
+import random
+
+# Quiz questions and answers
+quiz = [
+    {
+        "question": "What is the capital of France?",
+        "options": ["Paris", "London", "Berlin", "Rome"],
+        "answer": "Paris"
+    },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["Jupiter", "Mars", "Mercury", "Saturn"],
+        "answer": "Mars"
+    },
+    {
+        "question": "What is the largest mammal in the world?",
+        "options": ["Elephant", "Blue whale", "Giraffe", "Hippopotamus"],
+        "answer": "Blue whale"
+    }
+]
+
+def display_question(question):
+    print(question["question"])
+    for i, option in enumerate(question["options"], start=1):
+        print(f"{i}. {option}")
+    answer = input("Your answer: ")
+    return answer
+
+def play_quiz(quiz):
+    score = 0
+    for question in quiz:
+        print("\n" + "="*20)
+        user_answer = display_question(question)
+        if user_answer.lower() == question["answer"].lower():
+            print("Correct!")
+            score += 1
+        else:
+            print(f"Incorrect. The correct answer is: {question['answer']}")
+    print("\n" + "="*20)
+    print(f"Quiz completed! Your score is: {score}/{len(quiz)}")
+
+def main():
+    print("Welcome to the Quiz Game!")
+    print("Here are the rules:")
+    print("- You will be asked a series of multiple-choice questions.")
+    print("- Choose the correct answer from the options provided.")
+    print("- Each correct answer scores one point.")
+    print("\nLet's start the quiz!")
+    play_quiz(quiz)
+    while input("Do you want to play again? (yes/no): ").lower() == "yes":
+        random.shuffle(quiz)
+        play_quiz(quiz)
+
+if __name__ == "__main__":
+    main()
