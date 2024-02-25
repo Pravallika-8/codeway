@@ -1,0 +1,27 @@
+def calculator(ip1, ip2, operation):
+    a = ip1
+    b = ip2
+    if operation == "addition" or operation == "+":
+        return a + b
+    elif operation == "subtraction" or operation == "-":
+        return a - b
+    elif operation == "multiplication"or operation == "*":
+        return a * b
+    elif operation == "division" or operation == "/":
+        if b == 0:
+            return "syntax error"
+        return a / b
+    elif operation == "modulodivision" or operation == "%":
+        return a % b
+    elif operation == "floordivision" or operation == "//":
+        return a // b
+    else:
+        return "invalid operation"
+t = int(input("Enter the number of test cases: "))
+for tc in range(t):
+    input_expression=input()
+    ip1,operation,ip2=input_expression.split()
+    ip1=int(ip1)
+    ip2=int(ip2)
+    result = calculator(ip1, ip2, operation)
+    print("Result:", result)
